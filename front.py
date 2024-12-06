@@ -205,6 +205,8 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
+        self.add_functions()
+
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Калькулятор"))
@@ -228,6 +230,29 @@ class Ui_MainWindow(object):
         self.button_bs.setText(_translate("MainWindow", "<"))
         self.button_000.setText(_translate("MainWindow", "000"))
         self.button_adsu.setText(_translate("MainWindow", "+/-"))
+
+    def add_functions(self):
+        self.button_add.clicked.connect(lambda: self.write_number(self.button_add.text()))
+        self.button_sub.clicked.connect(lambda: self.write_number(self.button_sub.text()))
+        self.button_myl.clicked.connect(lambda: self.write_number(self.button_myl.text()))
+        self.button_div.clicked.connect(lambda: self.write_number(self.button_div.text()))
+        self.button_1.clicked.connect(lambda: self.write_number(self.button_1.text()))
+        self.button_2.clicked.connect(lambda: self.write_number(self.button_2.text()))
+        self.button_3.clicked.connect(lambda: self.write_number(self.button_3.text()))
+        self.button_4.clicked.connect(lambda: self.write_number(self.button_4.text()))
+        self.button_5.clicked.connect(lambda: self.write_number(self.button_5.text()))
+        self.button_6.clicked.connect(lambda: self.write_number(self.button_6.text()))
+        self.button_7.clicked.connect(lambda: self.write_number(self.button_7.text()))
+        self.button_8.clicked.connect(lambda: self.write_number(self.button_8.text()))
+        self.button_9.clicked.connect(lambda: self.write_number(self.button_9.text()))
+        self.button_0.clicked.connect(lambda: self.write_number(self.button_0.text()))
+        self.button_000.clicked.connect(lambda: self.write_number(self.button_000.text()))
+
+    def write_number(self, number):
+        current_value = str(self.lcd.value())  # Получаем текущее значение как строку
+        new_value = current_value + number  # Конкатенируем новое число
+        self.lcd.display(new_value)  # Отображаем новое значение
+
 
 if __name__ == "__main__":
     import sys
